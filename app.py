@@ -1,31 +1,40 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import tensorflow as tf
-import numpy as np
-from PIL import Image
-import base64, io
+import streamlit as st
+from streamlit_drawable_canvas import st_canvas
+from predict import predict_digit
 
-app = Flask(__name__)
-CORS(app)
+# Page setup
+st.set_page_config(page_title="Digit Recognizer")
+st.title("Handwritten Digit Recognizer")
+st.markdown("Draw a digit (0-9) in the box below!")
 
-model = tf.keras.models.load_model("model.h5")
+# Drawing canvas
+canvas_result = st_canvas(
+    fill_color="rgba(255, 165, 0, 0.3)",
+    stroke_width=20,
+    stroke_color="#FFFFFF",
+    background_color="#000000",
+    height=280,
+    width=280,
+    drawing_mode="freedraw",
+    key="canvas",
+)
 
-def preprocess(img_b64):
-    img_b64 = img_b64.split(",")[1]
-    img = Image.open(io.BytesIO(base64.b64decode(img_b64))).convert("L")
-    img = img.resize((28, 28))
-    img = np.array(img) / 255.0
-    img = img.reshape(1, 28, 28, 1)
-    return img
+# Predict button
+if canvas_result.image_data is not None:
+    if st.button("Recognize"):
+        digit, confidence = predict_digit(canvas_result.image_data)
 
-@app.route("/api/recognize", methods=["POST"])
-def recognize():
-    image = preprocess(request.json["image"])
-    pred = model.predict(image)
-    return jsonify({
-        "digit": int(np.argmax(pred)),
-        "confidence": float(np.max(pred))
-    })
+        if digit is None:
+            st.error("Model file 'digit_model.h5' not found.")
+        else:
+            st.write(f"## Prediction: {digit}")
+            st.write(f"Confidence: {confidence:.2%}")
+            st.progress(confidence)
 
-if __name__ == "__main__":
-    app.run()
+# Sidebar
+st.sidebar.header("Instructions")
+st.sidebar.info(
+    "1. Draw a single digit in the center.\n"
+    "2. Click 'Recognize' to see the AI's guess.\n"
+    "3. Use the undo/clear tools below the canvas to reset."
+)
