@@ -4,117 +4,61 @@
 
 Built as a submission for **Turing's Playground WOC 9**
 
-Github Repository → [https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert)
+Github Repository → [https://github.com/ankurmehtax2007-stack/HandWritten-Digit-Recogniton/tree/main](https://github.com/ankurmehtax2007-stack/HandWritten-Digit-Recogniton/tree/main)
+## Dataset
+The MNIST dataset is a classic benchmark in machine learning for digit recognition and contains 70,000 grayscale images (60,000 for training and 10,000 for testing).
 
-## 📖 Table of Contents
-- [✨ Key Features](#-key-features)
-- [📊 Dataset](#-dataset)
-- [📸 Screenshotst](#-screenshots)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [🚀 How to Run locally](#-how-to-run-locally)
-- [🔮 Future Plans](#-future-plans)
-- [🙏 Acknowledgments](#-acknowledgments)
+## 🚀 Features
 
-## ✨ Key Features
+- 📥 Load and preprocess the MNIST dataset  
+- 🧠 Train a digit recognition model  
+- 🔍 Predict digits from new images  
+- 🖼️ Simple app for digit input and prediction  
 
-- Real-time **drowsiness, blink rate & yawning** detection using Teachable Machine + TensorFlow.js
-- Modern **cyberpunk/neon dark mode** interface
-- **Journey Safety Report** — session stats, blink/yawn metrics, longest drowsy period, SOS status
-- **Gemini AI Safety Analysis** — intelligent summary of the driving session
-- **Quick Rest Finder** — finds nearby rest stops, coffee spots, quiet parks & hotels (~15 km radius)
-- Live **geolocation** tracking + Google Maps integration
-- **SOS emergency email** alert system
-- Start/Stop monitoring with clean status feedback
+---
 
-## 📊 Dataset
-The system is trained on a robust dataset tailored for driver monitoring:
+## 🧠 How It Works
 
-* **Drowsiness Model Dataset:** https://www.kaggle.com/datasets/ismailnasri20/driver-drowsiness-dataset-ddd
-* **Phone Detection Dataset:** https://universe.roboflow.com/driver-behavior-and-state-detection/driver-bfepd
+The system uses a neural network (e.g., TensorFlow/Keras) to learn patterns from thousands of handwritten digit images. After training, the model can recognize and classify new digit images provided by the user. :contentReference[oaicite:2]{index=2}
 
+---
 
-## 📸 Screenshots
+## 🛠️ Requirements
 
-### 1. Initialize Page
-Main entry point with dramatic "NEURAL SAFETY ACTIVATED" visual
+Before you begin, make sure you have:
 
-![landing_page](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Initialize.png)
+- **Python 3.7 or later**  
+- **pip**
 
-### 2. Active Monitoring + Journey Safety Report
-Detailed statistics dashboard — session duration, blinks/min, yawns, drowsy periods, SOS status, Gemini AI section
-
-![Monitoring](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Monitoring.png)
-
-![Report](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Report.png)
-
-### 3. Core Capabilities Overview
-Futuristic showcase of the system's main features: real-time ocular tracking, visual capture, multi-modal alerts, live GPS geolocation, and manual SOS activation.
-
-![core_capabilities](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Core_capabilities.png)
-
-### 4. Neural Technology Stack Overview
-Futuristic showcase of the tech stack used in the project
-
-![tech-stack](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Tech_stack.png)
-
-### 5. Quick Rest Finder
-Beautiful neon buttons to locate nearby safe rest locations via GPS
-
-![rest_Stop](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Rest_stop.png)
-
-### 6. Phone!
-Phone detection model — Monitors Driver on using phone during driving
-
-![Phone!](https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert/blob/main/screenshots/Phone!.png)
-
-## 🛠️ Tech Stack
-
-- **Frontend**          → HTML5, CSS3 (neon/cyberpunk style), JavaScript
-- **Machine Learning**  → Google Teachable Machine → TensorFlow.js
-- **Camera Access**     → WebRTC (getUserMedia)
-- **Email**     → Emailjs
-- **Geolocation**       → Browser Geolocation API + Google Maps links
-- **AI Analysis**       → Google Gemini API integration (for safety report summary)
-
-## 🚀 How to Run Locally
+Install all required packages with:
 
 ```bash
-# Clone the project
-git clone https://github.com/anshulk02101/-Driver-Drowsiness-Detection-System-with-SOS-Alert.git
-
-# Enter directory
-cd Driver-Drowsiness-Detection-System-with-SOS-Alert
-
-# Open with VS Code Live Server (recommended)
-# OR simply double-click index.html (but some features need http://localhost)
+pip install -r requirements.txt
 ```
 
-## ⚠️ Important Notes
 
-- Allow **camera** and **location** access when prompted by the browser
-- Best experience on **Google Chrome** (desktop version recommended)
-- Some advanced features may require additional setup:
-  - **Gemini AI** analysis → needs Google Gemini API key
-  - **SOS emergency email** → requires email service configuration/API key
+## Getting Started
+**1. Train the Model**
+
+Run the training script:
+```bash
+python train.py
+```
+This will train the model and (optionally) save it for later use.
+The script will output the predicted digit.
+
+**2. Run the App**
+
+Launch the app interface (e.g., for drawing or uploading digits):
+```bash
+streamlit run app.py
+```
+## Example Output
+![WhatsApp Image 2026-01-23 at 9 05 24 PM](https://github.com/user-attachments/assets/8036a904-e667-4f4b-87e6-c50c3eba7bab)
 
 ## 🔮 Future Plans
+- Handwritten alphabet recognition
+- Multi-digit recognition
+- Stroke smoothing
+- Save prediction history
 
-- Integrate real **SMS / WhatsApp** emergency alerts (using third-party APIs)
-- Improve **mobile responsiveness** and touch support
-- Train a more accurate drowsiness detection model 
-- Implement **session history** storage (localStorage or cloud-based)
-- Add **Dark / Light** theme toggle
-- Performance optimization for low-end devices
-- Add **multi-language support**
-
-## 🙏 Acknowledgments
-
-Special thanks to:
-
-- [Google Teachable Machine](https://teachablemachine.withgoogle.com/)  
-- [Emailjs](https://www.emailjs.com/)
-- Google **Gemini** (for intelligent safety analysis)  
-- **Google TechSprint 2025-26** organizers and team  
-- All individuals, researchers, and communities worldwide working on road safety & driver assistance technologies
-
-Your work inspires projects like this 💙
